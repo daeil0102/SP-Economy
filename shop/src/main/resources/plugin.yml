@@ -1,0 +1,19 @@
+name: SP-Shop
+version: '${version}'
+main: net.teujaem.shop.Shop
+api-version: '${spigot_api_version}'
+depend: [SP-Money]
+
+commands:
+  상점:
+    description: 상점 명령어
+    usage: /상점 [열기|만들기|리스트|아이템편집|가격편집|거래편집|재고편집|...] [이름]
+    aliases: [shop]
+
+permissions:
+  shop.admin:
+    description: 상점 관리자 명령어를 사용할 수 있습니다.
+    default: op
+  shop.use:
+    description: 상점을 열 수 있습니다.
+    default: true

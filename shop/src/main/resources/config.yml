@@ -1,0 +1,26 @@
+# ==============================
+#   Shop Plugin Configuration
+# ==============================
+
+# 전역 설정
+open-enabled: true            # false 로 두면 일반 유저는 "/상점 열기" 를 쓸 수 없습니다 (관리자는 항상 가능).
+
+# 채팅 프리픽스 / GUI 제목 (& 색상 코드 사용 가능)
+messages:
+  prefix-shop: "&a[ Shop ] &f"
+  prefix-help: "&a[ Shop Help ] &f"
+  prefix-error: "&c[ Error ] &f"
+
+gui-titles:
+  main: "&a[ 상점 ] "
+  item-edit: "&a[ 상점 아이템설정 ] "
+  price-edit-buy: "&a[ 상점 구매 가격설정 ] "
+  price-edit-sell: "&a[ 상점 판매 가격설정 ] "
+  trade-edit: "&a[ 상점 거래설정 ] "
+  stock-edit: "&a[ 상점 재고설정 ] "
+  price-setting: "&a[ 가격 ] "
+  stock-setting: "&a[ 재고 ] "
+  trade-setting: "&a[ 거래 ] "
+
+# 자동 시세변동 / 재고초기화 스케줄러 주기(틱). 1200틱 = 60초.
+scheduler-period-ticks: 1200

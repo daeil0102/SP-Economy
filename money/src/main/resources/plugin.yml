@@ -1,0 +1,6 @@
+name: SP-Money
+version: '${version}'
+main: net.teujaem.money.Money
+api-version: '${spigot_api_version}'
+depend:
+  - SP-Framework
