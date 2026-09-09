@@ -1,3 +1,3 @@
 rootProject.name = "SP-Economy"
 
-include("money", "shop")
+include("money", "shop", "usershop")

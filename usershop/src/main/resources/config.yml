@@ -1,0 +1,18 @@
+# 유저상점 설정
+
+# 판매 등록 시 수수료 (%)
+fee-percent: 5
+
+# 기본 판매 만료 기간 (등록 시점부터)
+expire:
+  days: 2
+  hours: 0
+  minutes: 0
+
+# ProxyEvent로 구매 소식을 다른 서버에 알릴 때 사용할 이 서버의 이름 (로그/알림용)
+server-name: "server-1"
+
+messages:
+  prefix-shop: "&6&l[&a&lUserShop&6&l]&f"
+  prefix-help: "&c&l[&b&lUserShop Help&c&l]&f"
+  prefix-error: "&4&l[&c&l오류&4&l]&f"

@@ -1,0 +1,16 @@
+name: SP-UserShop
+version: '${version}'
+main: net.teujaem.usershop.UserShop
+api-version: '${spigot_api_version}'
+depend: [SP-Money]
+
+commands:
+  유저상점:
+    description: 유저상점을 엽니다.
+    usage: /유저상점 [열기|보관함|등록|수수료|초기화|만료일설정]
+    aliases: [usershop, 상점]
+
+permissions:
+  usershop.admin:
+    description: 유저상점 관리자 명령어 사용 권한
+    default: op
