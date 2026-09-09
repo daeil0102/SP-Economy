@@ -1,4 +1,4 @@
-<h1>NR-Donation</h1>
+<h1>SP-Economyn</h1>
 
 <p>해당 프로젝트는 프록시용 이코노미 시스템 입니다</p>
 <p>해당 플러그인을 사용하기 위해선 SP-Framework가 필요합니다</p>
