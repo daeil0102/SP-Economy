@@ -1,0 +1,7 @@
+// Generated master build aggregation; original child builds are preserved.
+['build', 'clean', 'check'].each { taskName ->
+    tasks.matching { it.name == taskName }.configureEach {
+        dependsOn gradle.includedBuilds.collect { it.task(':' + taskName) }
+        dependsOn rootProject.subprojects.collect { it.path + ':' + taskName }
+    }
+}

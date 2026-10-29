@@ -15,3 +15,6 @@ allprojects {
 
     }
 }
+// JAVA_STUDIO_MASTER_BEGIN
+apply(from = "java-studio-master.gradle")
+// JAVA_STUDIO_MASTER_END

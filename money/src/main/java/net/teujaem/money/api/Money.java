@@ -13,15 +13,20 @@ public class Money {
 
     public static void add(Player player, int amount) {
         MoneyManager moneyManager = plugin.getMoneyManager();
-        moneyManager.update(player, moneyManager.get(player) + amount);
+        moneyManager.add(player, amount);
     }
 
     public static void remove(Player player, int amount) {
         MoneyManager moneyManager = plugin.getMoneyManager();
-        moneyManager.update(player, moneyManager.get(player) - amount);
+        moneyManager.remove(player, amount);
     }
 
     public static int get(Player player) {
         return plugin.getMoneyManager().get(player);
     }
+
+    public static void notifyBalanceChanged(java.util.UUID uuid) {
+        plugin.getMoneyManager().notifyChanged(uuid);
+    }
+
 }

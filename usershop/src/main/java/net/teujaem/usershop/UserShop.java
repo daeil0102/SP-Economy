@@ -36,14 +36,22 @@ public class UserShop extends JavaPlugin {
     private ShopConfig shopConfig;
     private ShopDatabase shopDatabase;
     private ShopManager shopManager;
+    private net.teujaem.usershop.manager.SaleNotices saleNotices;
     private final Gson gson = new Gson();
 
     @Override
     public void onEnable() {
+        try {
+            Class.forName("net.teujaem.money.manager.MoneyTransactions",false,net.teujaem.money.api.Money.class.getClassLoader());
+        } catch (ReflectiveOperationException | LinkageError incompatible) {
+            getLogger().severe("SP-Money와 SP-UserShop 버전이 맞지 않습니다. 같은 수정본의 두 JAR를 함께 교체하고 서버를 완전히 재시작하세요.");
+            getServer().getPluginManager().disablePlugin(this);return;
+        }
         saveDefaultConfig();
 
         this.shopConfig = new ShopConfig(this);
         this.shopDatabase = new ShopDatabase();
+        this.saleNotices = new net.teujaem.usershop.manager.SaleNotices(this,shopDatabase);
         this.shopManager = new ShopManager(this, shopDatabase);
 
         getServer().getPluginManager().registerEvents(new GuiListener(this), this);
@@ -60,6 +68,10 @@ public class UserShop extends JavaPlugin {
 
         // 1분(1200틱)마다 만료된 판매글을 회수하고, 열려있는 GUI를 갱신합니다.
         getServer().getScheduler().runTaskTimer(this, this::tickExpiration, 1200L, 1200L);
+        // Only UserShop owns sale messages, including offline sales and missed proxy events.
+        getServer().getOnlinePlayers().forEach(player->saleNotices.deliver(player.getUniqueId()));
+        getServer().getScheduler().runTaskTimer(this,()->getServer().getOnlinePlayers()
+                .forEach(player->saleNotices.deliver(player.getUniqueId())),100L,100L);
 
         getLogger().info("UserShop 플러그인이 활성화되었습니다.");
     }
@@ -121,6 +133,15 @@ public class UserShop extends JavaPlugin {
 
     public ShopDatabase getShopDatabase() {
         return shopDatabase;
+    }
+
+    public net.teujaem.usershop.manager.SaleNotices getSaleNotices() {
+        return saleNotices;
+    }
+
+    public void broadcastSaleNotice(UUID seller) {
+        try { ProxyData.sendToServer(PROXY_PLUGIN_NAME,"sale_settled",seller.toString()); }
+        catch (RuntimeException error) { getLogger().fine("판매 알림 동기화 실패; 주기 조회로 복구: "+error.getMessage()); }
     }
 
     public ShopManager getShopManager() {

@@ -25,14 +25,20 @@ public class ProxyPurchaseListener implements Listener {
     }
 
     private void sweepOnlinePlayers() {
-        for (Player online : Bukkit.getOnlinePlayers()) {
-            PendingPayout.tryPay(this.plugin, online.getUniqueId());
-        }
+        plugin.getShopDatabase().pendingSellers().thenAccept(sellers -> sellers.forEach(uuid -> PendingPayout.tryPay(plugin,uuid)))
+                .exceptionally(error -> {plugin.getLogger().warning("정산 대기 목록 조회 실패: "+error.getMessage());return null;});
     }
 
     @EventHandler
     public void onProxyEvent(ProxyEvent event) {
         if (!"UserShop".equals(event.getPluginName())) {
+            return;
+        }
+        if ("sale_settled".equals(event.getEventName())) {
+            if(event.getValue() instanceof String value && value.length()==36) {
+                try { plugin.getSaleNotices().deliver(java.util.UUID.fromString(value)); }
+                catch(IllegalArgumentException ignored) {}
+            }
             return;
         }
         if (!"purchase".equals(event.getEventName())) {

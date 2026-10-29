@@ -35,8 +35,28 @@ public class ShopDatabase {
         this.jpaManager = SPFramework.getInstance().getDatabaseController().createJpaManager(
                 ShopEntryEntity.class,
                 ReturnedItemEntity.class,
-                PendingEarningEntity.class
+                PendingEarningEntity.class,
+                net.teujaem.money.entity.MoneyEntity.class,
+                net.teujaem.usershop.entity.SaleNoticeEntity.class
         );
+    }
+
+    public CompletableFuture<Map<String,Integer>> settlePending(UUID sellerUuid) {
+        return jpaManager.executeAsync(em -> PayoutTransactions.settle(em,sellerUuid));
+    }
+
+    public CompletableFuture<List<net.teujaem.usershop.entity.SaleNoticeEntity>> claimNotices(UUID seller,String token,long now) {
+        return jpaManager.executeAsync(em->SaleNoticeTransactions.claim(em,seller,token,now));
+    }
+
+    public CompletableFuture<Void> finishNotice(UUID id,String token,boolean delivered) {
+        return jpaManager.executeAsync(em->{SaleNoticeTransactions.finish(em,id,token,delivered);return null;});
+    }
+
+    public CompletableFuture<List<UUID>> pendingSellers() {
+        return jpaManager.executeAsync(em -> em.createQuery(
+                "SELECT DISTINCT p.sellerUuid FROM PendingEarningEntity p",UUID.class)
+                .setMaxResults(100).getResultList());
     }
 
     // ---------- 판매글(ShopEntryEntity) ----------

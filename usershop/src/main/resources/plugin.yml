@@ -2,7 +2,7 @@ name: SP-UserShop
 version: '${version}'
 main: net.teujaem.usershop.UserShop
 api-version: '${spigot_api_version}'
-depend: [SP-Money]
+depend: [SP-Money, SP-Framework]
 
 commands:
   유저상점:
