@@ -1,13 +1,13 @@
-<h1>SP-Economyn</h1>
+<h1>SP-Economy</h1>
 
 <p>해당 프로젝트는 프록시용 이코노미 시스템 입니다</p>
 <p>해당 플러그인을 사용하기 위해선 SP-Framework가 필요합니다</p>
-<p>해당 프로젝트는은 money, shop, usershop 으로 나눠져 있습니다</p>
-<p>해당 프로젝트는 미완성된 프로젝트 입니다 일부 오류가 있을 수 있습니다</p>
+<p>해당 프로젝트는 money, shop, usershop으로 나눠져 있습니다</p>
 
 <h2>플러그인 버전</h2>
 
-- 플러그인 : spigot 1.12+
+- 플러그인 : spigot 1.21.11 (Java 21)
+  - base 버전 사용
 
 <h2>라이센스</h2>
 
@@ -17,9 +17,7 @@ Copyright (c) 2026 Teujaem
 2. 2차 수정이 불가능 합니다. (fork 포함)
 3. 2차 배포가 불가능 합니다.
 
-<p>해당 프로젝트는 스크립트 제작한 시스템을 AI를 활용하여 플러그인으로 재구성 했습니다</p>
-<P>일부 코드를 제외하고 대부분의 코드는 AI가 작성 했습니다</P>
-<p>원본 스크립트는 해당 디스코드에서 확인 하실 수 있습니다</p>
+<h2>디스코드</h2>
 https://discord.gg/pZN24fnZs2
 
 <h2>config</h2>
@@ -76,5 +74,4 @@ messages:
   prefix-shop: "&6&l[&a&lUserShop&6&l]&f"
   prefix-help: "&c&l[&b&lUserShop Help&c&l]&f"
   prefix-error: "&4&l[&c&l오류&4&l]&f"
-
 ```
