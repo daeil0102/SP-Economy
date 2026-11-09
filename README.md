@@ -1,15 +1,17 @@
-<h1>SP-Economy</h1>
+# SP-Economy
 
-<p>해당 프로젝트는 프록시용 이코노미 시스템 입니다</p>
-<p>해당 플러그인을 사용하기 위해선 SP-Framework가 필요합니다</p>
-<p>해당 프로젝트는 money, shop, usershop으로 나눠져 있습니다</p>
+해당 프로젝트는 프록시용 이코노미 시스템 입니다
 
-<h2>플러그인 버전</h2>
+해당 플러그인을 사용하기 위해선 SP-Framework가 필요합니다
+
+해당 프로젝트는 money, shop, usershop으로 나눠져 있습니다
+
+## 플러그인 버전
 
 - 플러그인 : spigot 1.21.11 (Java 21)
   - base 버전 사용
 
-<h2>라이센스</h2>
+## 라이센스
 
 Copyright (c) 2026 Teujaem
 
@@ -17,12 +19,13 @@ Copyright (c) 2026 Teujaem
 2. 2차 수정이 불가능 합니다. (fork 포함)
 3. 2차 배포가 불가능 합니다.
 
-<h2>디스코드</h2>
+## 디스코드
+
 https://discord.gg/pZN24fnZs2
 
-<h2>config</h2>
+## config
 
-<p>bukkit/plugins/SP-Shop/config.yml</p>
+bukkit/plugins/SP-Shop/config.yml
 
 ```
 # ==============================
@@ -53,7 +56,8 @@ gui-titles:
 scheduler-period-ticks: 1200
 ```
 
-<p>bukkit/plugins/SP-UserShop/config.yml</p>
+
+bukkit/plugins/SP-UserShop/config.yml
 
 ```
 # 유저상점 설정
